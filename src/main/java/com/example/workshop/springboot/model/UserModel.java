@@ -24,7 +24,7 @@ public class UserModel {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Integer id;
-  @NotEmpty(message = "Nome não pode ser vazio")  
+  @NotEmpty(message = "Nome nao pode ser vazio")  
   private String name;
   @Email(message = "Seu e-mail nao é valido, por favor digite um e-mail valido")
   @NotEmpty(message = "Nome não pode ser vazio")
