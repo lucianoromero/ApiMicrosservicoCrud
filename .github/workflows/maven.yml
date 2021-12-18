@@ -22,8 +22,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.lucianoromero}}
-          password: ${{ secrets.6c6ec728-df77-41d4-86b9-1aa43802989c}}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
@@ -31,4 +31,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.lucianoromero}}/spring-boot-ms:latest  
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ms:latest 
