@@ -20,7 +20,7 @@ services:
 
 # springboot
   springboot:
-    image: enomoto/spring-boot-ms:latest
+    image: lucianoromero/spring-boot-ms:latest
     ports:
       - "8080:8080"
     restart: always
