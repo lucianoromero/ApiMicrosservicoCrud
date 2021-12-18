@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+
+# Database Service (Mysql)
+  db:
+    # platform: linux/x86_64
+    image: mysql:8.0.27
+    container_name: database
+    ports:
+      - "3306:3306"
+    restart: always    
+    environment:
+      MYSQL_DATABASE: db_workshop
+      MYSQL_ROOT_USER: root      
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - localhost   
+
+# springboot
+  springboot:
+    image: enomoto/spring-boot-ms:latest
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - db # This service depends on mysql. Start that first.   
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - localhost
+    container_name: spring-boot-mysql
+
+volumes:
+  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  localhost:
